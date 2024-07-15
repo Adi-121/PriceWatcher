@@ -6,13 +6,13 @@ import Product from "@/lib/models/product.model";
 import { scrapeAmazonProduct } from "@/lib/scraper";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 
-export const maxDuration = 300; // This function can run for a maximum of 300 seconds
+export const maxDuration = 60; // This function can run for a maximum of 300 seconds
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
 export async function GET(request: Request) {
   try {
-    connectToDB();
+    await connectToDB();
 
     const products = await Product.find({});
 
@@ -59,7 +59,7 @@ export async function GET(request: Request) {
           // Send email notification
           await sendEmail(emailContent, userEmails);
         }
-        
+
         // Update Products in DB
         const updatedProduct = await Product.findOneAndUpdate(
           {
