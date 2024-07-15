@@ -81,38 +81,38 @@ const productDetails = async ({ params: { id } }: Props) => {
 
           {/* Price cards & modals*/}
 
-          { product.isOutOfStock ? <div className='my-7 flex flex-col gap-5 text-center'>Oops Currently Unavailable</div> :
+          {product.isOutOfStock ? <div className='my-7 flex flex-col gap-5 text-center'>Oops Currently Unavailable</div> :
             <div className='my-7 flex flex-col gap-5'>
 
-            <div className='flex flex-wrap gap-5'>
-              <PriceInfoCard
-                title="Current Price"
-                iconSrc="/assets/icons/price-tag.svg"
-                value={product.currentPrice}
-              />
+              <div className='flex flex-wrap gap-5'>
+                <PriceInfoCard
+                  title="Current Price"
+                  iconSrc="/assets/icons/price-tag.svg"
+                  value={product.currentPrice}
+                />
 
-              <PriceInfoCard
-                title="Average Price"
-                iconSrc="/assets/icons/price-tag.svg"
-                value={product.currentPrice}
-              />
+                <PriceInfoCard
+                  title="Average Price"
+                  iconSrc="/assets/icons/price-tag.svg"
+                  value={product.currentPrice}
+                />
 
-              <PriceInfoCard
-                title="Highest Price"
-                iconSrc="/assets/icons/arrow-up.svg"
-                value={product.highestPrice}
-              />
+                <PriceInfoCard
+                  title="Highest Price"
+                  iconSrc="/assets/icons/arrow-up.svg"
+                  value={product.highestPrice}
+                />
 
-              <PriceInfoCard
-                title="Lowest Price"
-                iconSrc="/assets/icons/arrow-down.svg"
-                value={product.currentPrice}
-              />
+                <PriceInfoCard
+                  title="Lowest Price"
+                  iconSrc="/assets/icons/arrow-down.svg"
+                  value={product.currentPrice}
+                />
+              </div>
+              {/* Modal */}
+              <Modal productId={id} />
             </div>
-            {/* Modal */}
-            <Modal productId={id} />
-            </div>
-          } 
+          }
         </div>
       </div>
 
